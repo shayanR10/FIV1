@@ -12,4 +12,4 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
 -  Google ecosystem integration (Kaggle, Colab)
 -  Graceful taxonomic fallback (using the Paleobiology Database API)
 
--  
+## Quick Start Guide (for Google Colab):
