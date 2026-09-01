@@ -13,3 +13,4 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
 -  Graceful taxonomic fallback (using the Paleobiology Database API)
 
 ## Quick Start Guide (for Google Colab):
+1. Go to the main file (where all of the actual code is) and click the "Open in Colab" button.
