@@ -1,4 +1,4 @@
-#FIV1
+**#FIV1**
 This project was created in Google Colab.
 
 An end-to-end computer vision and data pipeline that automatically scrapes, filters, and trains a ResNet-18 model to identify dinosaur fossil species, complete with intelligent taxonomic fallback powered by the Paleobiology Database (PBDB). Built with Python 3.
