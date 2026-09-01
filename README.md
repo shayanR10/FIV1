@@ -14,3 +14,6 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
 
 ## Quick Start Guide (for Google Colab):
 1. Go to the main file (where all of the actual code is) and click the "Open in Colab" button.
+2. Create a Google Kaggle account @https://www.kaggle.com/ (this is where the training images will be stored).
+3. In your Google Kaggle account:
+   -e 
