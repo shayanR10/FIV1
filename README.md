@@ -38,7 +38,7 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
  - Cell 4:
       - This is the actual model. Run it AFTER running the previous three cells to ensure the model trains correctly.
   
-##### Google Colab environments are temporary. If your runtime disconnects or restarts, you must run the setup and authentication cells again to rebuild your environment. Make sure to download your trained model file (`.pth`) to your local computer as soon as training finishes so you don't lose your progress! 
+##### IMPORTANT: Google Colab environments are temporary. If your runtime disconnects or restarts, you must run the setup and authentication cells again to rebuild your environment. Make sure to download your trained model file (`.pth`) to your local computer as soon as training finishes so you don't lose your progress! 
 
 #### DEBUGGING: Use this only if cell 4 does not upload any images to Kaggle:
  - Cell 5:
