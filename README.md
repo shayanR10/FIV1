@@ -32,13 +32,17 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
  - Cell 1:
       - Prerequisites: the first cell installs the necessary packages within the virtual environment to ensure that the project runs as expected.
  - Cell 2:
-      - Creates a kaggle.json file on your device (IMPORTANT)
+      - Kaggle Authentication: authenticates your Kaggle credentials (via API key) in order to allow the next few cells of the notebook to run properly.
  - Cell 3:
+      - Image scraper + uploader: Scrapes, filters (via OpenAI CLIP) and uploads images from the Wikimedia Commons API to your Kaggle dataset.
+ - Cell 4:
+      - This is the actual model. Run it AFTER running the previous three cells to ensure the model trains correctly.
+
+##### DEBUGGING: Use this only if cell 4 does not upload any images to Kaggle:
+ - Cell 5:
+      - Creates a kaggle.json file on your device.
+ - Cell 6:
       - Uploader for your kaggle.json file that the previous cell should have created. Makes sure everything has the correct permissions to ensure
         smooth uploading in cell 5.
- - Cell 4:
-      - Kaggle Authentication: authenticates your Kaggle credentials (via API key) in order to allow the next few cells of the notebook to run properly.
- - Cell 5:
-      - Image scraper + uploader: Scrapes, filters (via OpenAI CLIP) and uploads images from the Wikimedia Commons API to your Kaggle dataset.
- - Cell 6:
-      - This is the actual model. Run it AFTER running the previous three cells to ensure the model trains correctly.
+
+## IMPORTANT: DO NOT publicly upload or share your Kaggle API keys and/or Kaggle.json (if applicable) file online.
