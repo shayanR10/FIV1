@@ -43,6 +43,6 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
       - Creates a kaggle.json file on your device.
  - Cell 6:
       - Uploader for your kaggle.json file that the previous cell should have created. Makes sure everything has the correct permissions to ensure
-        smooth uploading in cell 5.
+        smooth uploading in cell 4 if it has previously failed.
 
 ## IMPORTANT: DO NOT publicly upload or share your Kaggle API keys and/or Kaggle.json (if applicable) file online.
