@@ -13,16 +13,16 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
 -  Graceful taxonomic fallback (using the Paleobiology Database API)
 
 ## Quick Start Guide (for Google Colab):
-1. Go to the main file (where all of the actual code is) and click the "Open in Colab" button.
-2. Create a Google Kaggle account @https://www.kaggle.com/ (this is where the training images will be stored).
-3. In your Google Kaggle account:
-   - Create and save an API key (you can do this by clicking your profile picture post sign up,
-     going to "Your API tokens," and clicking "Generate New Token" under "API Tokens (Recommended)"
-     Make sure you immediately save your key; you can only view it once.
-   - Create a new dataset in Google Kaggle (find and click "Data Hub" in the side menu, click on "Datasets" and then "New Dataset")
-   - Note down your account username and dataset slug; you can find it in your newly created dataset URL: (https://www.kaggle.com/datasets/YourUsernameIsHere/YourSlugIsHere)
-   - Enter Google Colab and open the Secrets tab (the key icon); create three secrets named "KAGGLE_USERNAME" , "KAGGLE_SLUG" , and "KAGGLE_KEY"
-     (have to be these names exactly otherwise this will not work). Paste in your own Kaggle username, dataset slug, and API key, respectively.
-   - In Google Colab, connect to a T4 TPU runtime (this ensures the fastest results)
-   - Finally, click each code cell in sequential order to ensure everything runs correctly, and the model is set up!
+1. Navigate to the repository housing the main code file and click the Open in Colab badge at the top.
+2. Sign up or log into Kaggle. Click your profile picture → Settings → API Tokens → Click Generate New Token.
+3. Open the downloaded kaggle.json file with any text editor to view your credentials.
+4. In Kaggle's left sidebar, click Data Hub → Datasets → New Dataset.
+   - Note down your username and dataset slug from the resulting URL: https://kaggle.com[YourUsername]/[YourSlug]/
+5. Open the Secrets tab (the key icon) in Google Colab's left sidebar. Add three new secrets with these exact, case-sensitive names:
+   - KAGGLE_USERNAME (Your Kaggle account username)
+   - KAGGLE_SLUG (The slug created for your dataset)
+   - KAGGLE_KEY (The long string found inside your downloaded kaggle.json file)
+   IMPORTANT: Make sure you toggle Notebook Access to ON for all three!
+6. Navigate to the top menu, select Runtime → Change runtime type, and select T4 GPU to enable hardware acceleration.
+7. Run each code cell sequentially from top to bottom, and the model is setup!
      
