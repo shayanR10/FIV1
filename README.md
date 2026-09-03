@@ -42,7 +42,7 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
 
 #### Cleanup:
    - Cell 5:
-         - Cleanup: If when checking your Kaggle dataset, you discover that the scraper collected images of genera that are unsatisfactory, use this to deleted the affected (granted, this deletes            the folder itself, so only use this if an entire folder contains mostly/all unsatisfactory training images).
+         - Cleanup: If when checking your Kaggle dataset, you discover that the scraper collected images of genera that are unsatisfactory, use this to deleted the affected (granted, this             deletes the folder itself, so only use this if an entire folder contains mostly/all unsatisfactory training images).
      
      ##### Note: the individual folders in your Kaggle dataset are ordered by genera (e.g. Allosaurus).
 
