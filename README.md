@@ -40,10 +40,16 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
   
 ##### IMPORTANT: Google Colab environments are temporary. If your runtime disconnects or restarts, you must run the setup and authentication cells again to rebuild your environment. Make sure to download your trained model file (`.pth`) to your local computer as soon as training finishes so you don't lose your progress! 
 
+#### Cleanup:
+   - Cell 5:
+         - Cleanup: If when checking your Kaggle dataset, you discover that the scraper collected images of genera that are unsatisfactory, use this to deleted the affected (granted, this deletes            the folder itself, so only use this if an entire folder contains mostly/all unsatisfactory training images).
+     
+     ##### Note: the individual folders in your Kaggle dataset are ordered by genera (e.g. Allosaurus).
+
 #### DEBUGGING: Use this only if cell 4 does not upload any images to Kaggle:
- - Cell 5:
-      - Creates a kaggle.json file on your device.
  - Cell 6:
+      - Creates a kaggle.json file on your device.
+ - Cell 7:
       - Uploader for your kaggle.json file that the previous cell should have created. Makes sure everything has the correct permissions to ensure
         smooth uploading in cell 4 if it has previously failed.
 
