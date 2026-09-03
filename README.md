@@ -41,6 +41,7 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
       - Prerequisites: the first cell installs the necessary packages within the virtual environment to ensure that the project runs as expected.
  - Cell 2:
       - Kaggle Authentication: authenticates your Kaggle credentials (via API key) in order to allow the next few cells of the notebook to run properly.
+        Run this cell TWICE to ensure proper function.
  - Cell 3:
       - Image scraper + uploader: Scrapes, filters (via OpenAI CLIP) and uploads images from the Wikimedia Commons API to your Kaggle dataset.
  - Cell 4:
