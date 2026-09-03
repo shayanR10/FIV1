@@ -12,6 +12,14 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
 -  Google ecosystem integration (Kaggle, Colab)
 -  Graceful taxonomic fallback (using the Paleobiology Database API)
 
+#### Required Prerequisites:
+- A Google account (for Google Colab)
+- A Google Kaggle account (to store the scraped training images)
+##### The next three prerequisites are included inside the notebook. Nothing additional is required.
+ - OpenAI CLIP
+ - NumPy
+ - KaggleHub
+
 ## Quick Start Guide (for Google Colab):
 1. Navigate to the repository housing the main code file and click the Open in Colab badge at the top.
 2. Sign up or log into Kaggle. Click your profile picture → Settings → API Tokens → Click Generate New Token.
