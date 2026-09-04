@@ -52,13 +52,16 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
 #### Cleanup:
  - Cell 5:
       - Cleanup: If when checking your Kaggle dataset, you discover that the scraper collected images of genera that are unsatisfactory, use this to deleted the affected (granted, this             deletes the folder itself, so only use this if an entire folder contains mostly/all unsatisfactory training images).
+ - Cell 6:
+      - Restoration: If you realize you accidentally deleted the wrong genera folder, you can run the code in this cell to rescrape and restore it to your dataset.
+         
          
      ##### Note: the individual folders in your Kaggle dataset are ordered by genera (e.g. Allosaurus).
 
 #### DEBUGGING: Use this only if cell 4 does not upload any images to Kaggle:
- - Cell 6:
-      - Creates a kaggle.json file on your device.
  - Cell 7:
+      - Creates a kaggle.json file on your device.
+ - Cell 8:
       - Uploader for your kaggle.json file that the previous cell should have created. Makes sure everything has the correct permissions to ensure
         smooth uploading in cell 4 if it has previously failed.
 
