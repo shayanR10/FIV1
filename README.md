@@ -15,6 +15,7 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
 #### Required Prerequisites:
 - A Google account (for Google Colab)
 - A Google Kaggle account (to store the scraped training images)
+  
 **The next three prerequisites are included inside the notebook. Nothing additional is required.**
  - OpenAI CLIP
  - NumPy
@@ -30,6 +31,7 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
    - KAGGLE_USERNAME (Your Kaggle account username)
    - KAGGLE_SLUG (The slug created for your dataset)
    - KAGGLE_KEY (The long string found inside your downloaded kaggle.json file)
+     
 **IMPORTANT: Make sure you toggle Notebook Access to ON for all three!**
 6. Navigate to the top menu, select Runtime → Change runtime type, and select T4 GPU to enable hardware acceleration.
 7. Run each code cell sequentially from top to bottom, and the model is setup!
