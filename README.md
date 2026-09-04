@@ -15,7 +15,7 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
 #### Required Prerequisites:
 - A Google account (for Google Colab)
 - A Google Kaggle account (to store the scraped training images)
-##### The next three prerequisites are included inside the notebook. Nothing additional is required.
+**The next three prerequisites are included inside the notebook. Nothing additional is required.**
  - OpenAI CLIP
  - NumPy
  - KaggleHub
@@ -30,7 +30,7 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
    - KAGGLE_USERNAME (Your Kaggle account username)
    - KAGGLE_SLUG (The slug created for your dataset)
    - KAGGLE_KEY (The long string found inside your downloaded kaggle.json file)
-###### IMPORTANT: Make sure you toggle Notebook Access to ON for all three!
+**IMPORTANT: Make sure you toggle Notebook Access to ON for all three!**
 6. Navigate to the top menu, select Runtime → Change runtime type, and select T4 GPU to enable hardware acceleration.
 7. Run each code cell sequentially from top to bottom, and the model is setup!
      
@@ -46,8 +46,8 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
       - Image scraper + uploader: Scrapes, filters (via OpenAI CLIP) and uploads images from the Wikimedia Commons API to your Kaggle dataset.
  - Cell 4:
       - This is the actual model. Run it AFTER running the previous three cells to ensure the model trains correctly.
-  
-##### IMPORTANT: Google Colab environments are temporary. If your runtime disconnects or restarts, you must run the setup and authentication cells again to rebuild your environment. Make sure to download your trained model file (`.pth`) to your local computer as soon as training finishes so you don't lose your progress! 
+
+**IMPORTANT: Google Colab environments are temporary. If your runtime disconnects or restarts, you must run the setup and authentication cells again to rebuild your environment. Make sure to download your trained model file (`.pth`) to your local computer as soon as training finishes so you don't lose your progress!**
 
 #### Cleanup:
  - Cell 5:
@@ -56,7 +56,7 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
       - Restoration: If you realize you accidentally deleted the wrong genera folder, you can run the code in this cell to rescrape and restore it to your dataset.
          
          
-     ##### Note: the individual folders in your Kaggle dataset are ordered by genera (e.g. Allosaurus).
+**Note: the individual folders in your Kaggle dataset are ordered by genera (e.g. Allosaurus).**
 
 #### DEBUGGING: Use this only if cell 4 does not upload any images to Kaggle:
  - Cell 7:
@@ -65,4 +65,4 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
       - Uploader for your kaggle.json file that the previous cell should have created. Makes sure everything has the correct permissions to ensure
         smooth uploading in cell 4 if it has previously failed.
 
-## IMPORTANT: DO NOT publicly upload or share your Kaggle API keys and/or Kaggle.json (if applicable) file online.
+**IMPORTANT: DO NOT publicly upload or share your Kaggle API keys and/or Kaggle.json (if applicable) file online.**
