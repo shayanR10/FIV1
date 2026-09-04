@@ -20,6 +20,7 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
  - OpenAI CLIP
  - NumPy
  - KaggleHub
+ - Scikit-learn
 
 ## Quick Start Guide (for Google Colab):
 1. Navigate to the repository housing the main code file and click the Open in Colab badge at the top.
@@ -69,3 +70,4 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
         smooth uploading in cell 4 if it has previously failed.
 
 **IMPORTANT: DO NOT publicly upload or share your Kaggle API keys and/or Kaggle.json (if applicable) file online.**
+**If you publish a version of this code to your own GitHub repository, please make sure to clear your output boxes before doing so. This prevents accidental sharing of aforementioned API keys.**
