@@ -20,7 +20,6 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
  - OpenAI CLIP
  - NumPy
  - KaggleHub
- - Scikit-learn
 
 ## Quick Start Guide (for Google Colab):
 1. Navigate to the repository housing the main code file and click the Open in Colab badge at the top.
