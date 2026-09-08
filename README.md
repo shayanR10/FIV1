@@ -50,7 +50,7 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
  - Cell 4:
       - This is the actual model. Run it AFTER running the previous three cells to ensure the model trains correctly.
 
-**IMPORTANT: Google Colab environments are temporary. If your runtime disconnects or restarts, you must run the setup and authentication cells again to rebuild your environment. Make sure to download your trained model file (`.pth`) to your local computer as soon as training finishes so you don't lose your progress!**
+**WARNING: Google Colab environments are temporary. If your runtime disconnects or restarts, you must run the setup and authentication cells again to rebuild your environment. Make sure to download your trained model file (`.pth`) to your local computer as soon as training finishes so you don't lose your progress!**
 
 #### Cleanup:
  - Cell 5:
@@ -60,6 +60,7 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
          
          
 **Note: the individual folders in your Kaggle dataset are ordered by genera (e.g. Allosaurus).**
+**WARNING: Do not run either of these cells without filling in all the marked input boxes (marked by [""]). Doing so may result in unintended effects, such as corruption or data loss, affecting your Kaggle database.**
 
 #### DEBUGGING: Use this only if cell 4 does not upload any images to Kaggle:
  - Cell 7:
@@ -68,5 +69,5 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
       - Uploader for your kaggle.json file that the previous cell should have created. Makes sure everything has the correct permissions to ensure
         smooth uploading in cell 4 if it has previously failed.
 
-**IMPORTANT: DO NOT publicly upload or share your Kaggle API keys and/or Kaggle.json (if applicable) file online.**
+**WARNING: DO NOT publicly upload or share your Kaggle API keys and/or Kaggle.json (if applicable) file online.**
 **If you publish a version of this code to your own GitHub repository, please make sure to clear your output boxes before doing so. This prevents accidental sharing of aforementioned API keys.**
