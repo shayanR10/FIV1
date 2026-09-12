@@ -56,7 +56,7 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
  - Cell 5:
       - Cleanup: If when checking your Kaggle dataset, you discover that the scraper collected images of genera that are unsatisfactory, use this to deleted the affected (granted, this             deletes the folder itself, so only use this if an entire folder contains mostly/all unsatisfactory training images).
  - Cell 6:
-      - Restoration: If you realize you accidentally deleted the wrong genera folder, you can run the code in this cell to rescrape and restore it to your dataset.
+      - Restoration: If you realize you accidentally deleted the wrong genus folder, you can run the code in this cell to rescrape and restore it to your dataset.
          
          
 **Note: the individual folders in your Kaggle dataset are ordered by genera (e.g. Allosaurus).**
