@@ -16,10 +16,11 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
 - A Google account (for Google Colab)
 - A Google Kaggle account (to store the scraped training images)
   
-**The next three prerequisites are included inside the notebook. Nothing additional is required.**
+**The following prerequisites are included inside the notebook. Nothing additional is required.**
  - OpenAI CLIP
  - NumPy
  - KaggleHub
+ - Safetensors
 
 ## Quick Start Guide (for Google Colab):
 1. Navigate to the repository housing the main code file and click the Open in Colab badge at the top.
