@@ -65,7 +65,7 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
 **WARNING: Do not run either of these cells without filling in all the marked input boxes (marked by [""]). Doing so may result in unintended effects, such as corruption or data loss, affecting your Kaggle database.**
 
 #### Debugging/Troubleshooting: 
-**IMPORTANT: Use this only if cell 4 does not upload any images to Kaggle:**
+**IMPORTANT: Use the following only if cell 4 cannot upload images to your dataset:**
  - Cell 7:
       - Creates a kaggle.json file on your device. This file contains your Kaggle username along with your API key.
  - Cell 8:
