@@ -64,7 +64,8 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
 
 **WARNING: Do not run either of these cells without filling in all the marked input boxes (marked by [""]). Doing so may result in unintended effects, such as corruption or data loss, affecting your Kaggle database.**
 
-#### DEBUGGING: Use this only if cell 4 does not upload any images to Kaggle:
+#### DEBUGGING: 
+**IMPORTANT: Use this only if cell 4 does not upload any images to Kaggle:**
  - Cell 7:
       - Creates a kaggle.json file on your device.
  - Cell 8:
