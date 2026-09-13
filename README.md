@@ -67,7 +67,7 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
 #### DEBUGGING: 
 **IMPORTANT: Use this only if cell 4 does not upload any images to Kaggle:**
  - Cell 7:
-      - Creates a kaggle.json file on your device.
+      - Creates a kaggle.json file on your device. This file contains your Kaggle username along with your API key.
  - Cell 8:
       - Uploader for your kaggle.json file that the previous cell should have created. Makes sure everything has the correct permissions to ensure
         smooth uploading in cell 4 if it has previously failed.
