@@ -27,7 +27,7 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
 2. Sign up or log into Kaggle. Click your profile picture → Settings → API Tokens → Click Generate New Token.
 3. Open the downloaded kaggle.json file with any text editor to view your credentials.
 4. In Kaggle's left sidebar, click Data Hub → Datasets → New Dataset.
-   - Note down your username and dataset slug from the resulting URL: https://kaggle.com[YourUsername]/[YourSlug]/
+   - Note down your username and dataset slug from the resulting URL: https://kaggle.com[YourUsernameIsHere]/[YourSlugIsHere]/
 5. Open the Secrets tab (the key icon) in Google Colab's left sidebar. Add three new secrets with these exact, case-sensitive names:
    - KAGGLE_USERNAME (Your Kaggle account username)
    - KAGGLE_SLUG (The slug created for your dataset)
