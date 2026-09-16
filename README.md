@@ -25,13 +25,13 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
 ## Quick Start Guide (for Google Colab):
 1. Navigate to the repository housing the main code file and click the Open in Colab badge at the top.
 2. Sign up or log into Kaggle. Click your profile picture → Settings → API Tokens → Click Generate New Token.
-3. Open the downloaded kaggle.json file with any text editor to view your credentials.
+3. Save the generated API key (the long string of numbers and letters).
 4. In Kaggle's left sidebar, click Data Hub → Datasets → New Dataset.
    - Note down your username and dataset slug from the resulting URL: https://kaggle.com[YourUsernameIsHere]/[YourSlugIsHere]/
 5. Open the Secrets tab (the key icon) in Google Colab's left sidebar. Add three new secrets with these exact, case-sensitive names:
    - KAGGLE_USERNAME (Your Kaggle account username)
    - KAGGLE_SLUG (The slug created for your dataset)
-   - KAGGLE_KEY (The long string found inside your downloaded kaggle.json file)
+   - KAGGLE_KEY (Your Kaggle API key)
      
 **IMPORTANT: Make sure you toggle Notebook Access to ON for all three!**
 
