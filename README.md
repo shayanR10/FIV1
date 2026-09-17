@@ -22,6 +22,7 @@ An end-to-end computer vision and data pipeline that automatically scrapes, filt
  - NumPy
  - KaggleHub
  - Safetensors
+ - Cowsay (for QoL)
 
 ## Quick Start Guide (for Google Colab):
 1. Navigate to the repository housing the main code file and click the Open in Colab badge at the top.
