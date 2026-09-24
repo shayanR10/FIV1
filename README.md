@@ -20,11 +20,16 @@ The core architecture utilizes a hierarchical taxonomic safety net. By linking r
   
 **The following prerequisites are included inside the notebook. Nothing additional is required.**
  - PyTorch's ResNet-18 (Included with Colab)
+ - Seaborn (Included with Colab)
+ - SciKit learn (Included with Colab)
+ - Matplotlib (Included with Colab)
  - OpenAI CLIP
  - NumPy
  - KaggleHub
  - Safetensors
  - Cowsay (for QoL)
+
+**If you are working locally inside an application such as VS, make sure to also install these libraries first.**
 
 ## Quick Start Guide (for Google Colab):
 1. Navigate to the repository housing the main code file and click the Open in Colab badge at the top.
@@ -75,6 +80,10 @@ The core architecture utilizes a hierarchical taxonomic safety net. By linking r
  - Cell 8:
       - Uploader for your kaggle.json file that the previous cell should have created. Makes sure everything has the correct permissions to ensure
         smooth uploading in cell 4 if it has previously failed.
+
+#### Diagnostics
+  - Cell 9:
+        - Confusion matrix for the model. This cell allows you to visualize which species the model is confusing most. I recommend running this cell immediately post training.
 
 **WARNING: DO NOT publicly upload or share your Kaggle API keys and/or Kaggle.json (if applicable) file online.**
 **If you publish a version of this code to your own GitHub repository, please make sure to clear your output boxes before doing so. This prevents accidental sharing of aforementioned API keys.**
