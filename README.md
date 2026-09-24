@@ -4,7 +4,8 @@
 This project was created in Google Colab.
 
 ### Description:
-A fully automated, cloud-native computer vision and data engineering pipeline designed to handle the complex real-world challenges of paleontological image classification. Built specifically to run seamlessly within the Google Colab and Kaggle ecosystems, the project automates the entire machine learning lifecycle, from targeted data harvesting and semantic filtering to multi-level deep learning and intelligent inference. 
+A fully automated, cloud-native computer vision and data engineering pipeline designed to handle the complex real-world challenges of paleontological image classification. Built specifically to run seamlessly within the Google Colab and Kaggle ecosystems, the notebook automates the entire machine learning lifecycle, from targeted data harvesting and semantic filtering to multi-level deep learning and intelligent inference. 
+
 The core architecture utilizes a hierarchical taxonomic safety net. By linking runtime model layers with live paleontological metadata from the Paleobiology Database API, the system guarantees a biologically accurate fallback prediction (climbing from Species to Genus or Family) whenever fine-grained species identification falls below confidence thresholds.
 
 ### Key Features:
