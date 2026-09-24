@@ -4,7 +4,7 @@
 This project was created in Google Colab.
 
 ### Description:
-An end-to-end computer vision and data pipeline that automatically scrapes, filters, and trains a ResNet-18 model to identify dinosaur fossil species, complete with intelligent taxonomic fallback powered by the Paleobiology Database (PBDB). Built with Python 3.
+An automated PyTorch pipeline to scrape, clean, and train a ResNet-18 on dinosaur fossils, featuring intelligent genus/family fallback tracking via the Paleobiology Database API. Built with Python 3.
 
 ### Key Features:
 -  ResNet-18
