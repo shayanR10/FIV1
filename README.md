@@ -4,7 +4,7 @@
 This project was created in Google Colab.
 
 ### Description:
-An automated PyTorch pipeline to scrape, clean, and train a ResNet-18 on dinosaur fossils, featuring intelligent genus/family fallback tracking via the Paleobiology Database API. Built with Python 3.
+An automated PyTorch pipeline optimized for Google Colab and Kaggle that scrapes fossil images from Wikimedia Commons, filters data using OpenAI's CLIP, and trains a ResNet-18 model with dynamic taxonomic fallback powered by the Paleobiology Database API. Built with Python 3.
 
 ### Key Features:
 -  ResNet-18
