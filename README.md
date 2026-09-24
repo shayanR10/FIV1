@@ -81,7 +81,7 @@ The core architecture utilizes a hierarchical taxonomic safety net. By linking r
       - Uploader for your kaggle.json file that the previous cell should have created. Makes sure everything has the correct permissions to ensure
         smooth uploading in cell 4 if it has previously failed.
 
-#### Diagnostics
+#### Diagnostics:
   - Cell 9:
       - Confusion matrix for the model. This cell allows you to visualize which species the model is confusing most. I recommend running this cell immediately post training.
        
