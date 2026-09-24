@@ -83,7 +83,8 @@ The core architecture utilizes a hierarchical taxonomic safety net. By linking r
 
 #### Diagnostics
   - Cell 9:
-        - Confusion matrix for the model. This cell allows you to visualize which species the model is confusing most. I recommend running this cell immediately post training.
+      - Confusion matrix for the model. This cell allows you to visualize which species the model is confusing most. I recommend running this cell immediately post training.
+       
 
 **WARNING: DO NOT publicly upload or share your Kaggle API keys and/or Kaggle.json (if applicable) file online.**
 **If you publish a version of this code to your own GitHub repository, please make sure to clear your output boxes before doing so. This prevents accidental sharing of aforementioned API keys.**
