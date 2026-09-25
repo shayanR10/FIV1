@@ -9,7 +9,7 @@ A fully automated, cloud-native computer vision and data engineering pipeline de
 The core architecture utilizes a hierarchical taxonomic safety net. By linking runtime model layers with live paleontological metadata from the Paleobiology Database API, the system guarantees a biologically accurate fallback prediction (climbing from Species to Genus or Family) whenever fine-grained species identification falls below confidence thresholds.
 
 ### Key Features:
--  ConvNeXt
+-  ConvNeXt-tiny
 -  OpenAI's CLIP powered image filtering
 -  Google ecosystem integration (Kaggle, Colab)
 -  Graceful taxonomic fallback (using the Paleobiology Database API)
