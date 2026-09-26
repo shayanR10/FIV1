@@ -45,11 +45,10 @@ The core architecture utilizes a hierarchical taxonomic safety net. By linking r
 **IMPORTANT: Make sure you toggle Notebook Access to ON for all three!**
 
 6. Navigate to the top menu, select Runtime → Change runtime type, and select T4 GPU to enable hardware acceleration.
-7. Run each code cell sequentially from top to bottom, and the model is setup!
+7. Run Cells 1 to 4 until completion, and the model is setup!
+   **Note: I also recommend running Cell 9 immediately post training (for diagnostic data).**
      
 ### How the Notebook Works:
- - Cell 0:
-      - This is just a small blurb (has #s to signify comments) and does not have anything to do with the actual function. Disregard.
  - Cell 1:
       - Prerequisites: the first cell installs the necessary packages within the virtual environment to ensure that the project runs as expected.
  - Cell 2:
