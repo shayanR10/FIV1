@@ -29,7 +29,7 @@ The core architecture utilizes a hierarchical taxonomic safety net. By linking r
  - Safetensors
  - Cowsay (for QoL)
 
-**If you are working locally inside an application such as VS, make sure to also install these libraries first.**
+**If you are working locally inside an application such as VS Code, make sure to also install these libraries first.**
 
 ## Quick Start Guide (for Google Colab):
 1. Navigate to the repository housing the main code file and click the Open in Colab badge at the top.
