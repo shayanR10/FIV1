@@ -46,6 +46,7 @@ The core architecture utilizes a hierarchical taxonomic safety net. By linking r
 
 6. Navigate to the top menu, select Runtime → Change runtime type, and select T4 GPU to enable hardware acceleration.
 7. Run Cells 1 to 4 until completion, and the model is setup!
+   
    **Note: I also recommend running Cell 9 immediately post training (for diagnostic data).**
      
 ### How the Notebook Works:
