@@ -80,6 +80,9 @@ The core architecture utilizes a hierarchical taxonomic safety net. By linking r
  - Cell 8:
       - Uploader for your kaggle.json file that the previous cell should have created. Makes sure everything has the correct permissions to ensure
         smooth uploading in cell 4 if it has previously failed.
+   
+**WARNING: DO NOT publicly upload or share your Kaggle API keys and/or Kaggle.json (if applicable) file online.**
+**If you publish a version of this code to your own GitHub repository, please make sure to clear your output boxes before doing so. This prevents accidental sharing of aforementioned API keys.**
 
 #### Diagnostics:
   - Cell 9:
@@ -87,7 +90,3 @@ The core architecture utilizes a hierarchical taxonomic safety net. By linking r
         
    
 <img width="960" height="720" alt="FIV1 DATA FLOW (2)" src="https://github.com/user-attachments/assets/0e352e50-e056-49c1-8bfb-ec7c18207247" />
-
-
-**WARNING: DO NOT publicly upload or share your Kaggle API keys and/or Kaggle.json (if applicable) file online.**
-**If you publish a version of this code to your own GitHub repository, please make sure to clear your output boxes before doing so. This prevents accidental sharing of aforementioned API keys.**
