@@ -6,7 +6,9 @@ This project was created in Google Colab.
 ### Description:
 A fully automated, cloud-native computer vision and data engineering pipeline designed to handle the complex real-world challenges of paleontological image classification. Built specifically to run seamlessly within the Google Colab and Kaggle ecosystems, the notebook automates the entire machine learning lifecycle, from targeted data harvesting and semantic filtering to multi-level deep learning and intelligent inference. 
 
-The core architecture utilizes a hierarchical taxonomic safety net. By linking runtime model layers with live paleontological metadata from the Paleobiology Database API, the system guarantees a biologically accurate fallback prediction (climbing from Species to Genus or Family) whenever fine-grained species identification falls below confidence thresholds.
+The core architecture utilizes a hierarchical taxonomic safety net. By linking runtime model layers with live paleontological metadata from the Paleobiology Database API, the system outputs a biologically accurate fallback prediction (climbing from Species to Genus or Family) whenever fine-grained species identification falls below confidence thresholds.
+
+<img width="760" height="570" alt="FIV1 DATA FLOW" src="https://github.com/user-attachments/assets/88063b53-5b73-4a10-a992-bf3dd7a93d00" />
 
 ### Key Features:
 -  ConvNeXt-tiny
@@ -89,5 +91,5 @@ The core architecture utilizes a hierarchical taxonomic safety net. By linking r
       - Confusion matrix for the model. This cell allows you to visualize which species the model is confusing most. I recommend running this cell immediately post training.
         
    
-<img width="760" height="570" alt="FIV1 DATA FLOW" src="https://github.com/user-attachments/assets/88063b53-5b73-4a10-a992-bf3dd7a93d00" />
+
 
