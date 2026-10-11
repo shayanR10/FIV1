@@ -84,6 +84,7 @@ The core architecture utilizes a hierarchical taxonomic safety net. By linking r
 #### Diagnostics:
   - Cell 9:
       - Confusion matrix for the model. This cell allows you to visualize which species the model is confusing most. I recommend running this cell immediately post training.
+        
    
 <img width="960" height="720" alt="FIV1 DATA FLOW" src="https://github.com/user-attachments/assets/b2c5674c-341e-4eaa-89a4-f27a64ce6dac" />
 
