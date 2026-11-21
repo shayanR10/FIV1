@@ -15,7 +15,7 @@ Unlike traditional single-stream image classifiers that frequently memorize trai
 
 ### Key Technical Features & Stability Patches
 
-* **Hierarchical Taxonomic Safety Net:** Automatically queries the live Paleobiology Database (PBDB) API, climbing taxonomic ranks ($\text{Species} \to \text{Genus} \to \text{Family} \to \text{Superfamily} \to \text{Subfamily} \to \text{Infraorder}$) to provide graceful fallbacks when confidence falls below set thresholds ($85\%$ / $50\%$).
+* **Hierarchical Taxonomic Safety Net:** Automatically queries the live Paleobiology Database (PBDB) API, climbing taxonomic ranks ($\text{Species} \to \text{Genus} \to \text{Family} \to \text{Subfamily} \to \text{Superfamily} \to \text{Infraorder}$) to provide graceful fallbacks when confidence falls below set thresholds ($85\%$ / $50\%$).
 * **Cross-Attentive Fusion & Orthogonal Loss:** Combines embedding streams via multi-head self-attention while applying an orthogonal contrastive penalty ($\mathcal{L}_{\text{ortho}}$) to prevent representation collapse across streams.
 * **Custom SAM Optimizer with Finite-State Guards:** Implements Sharpness-Aware Minimization with strict `torch.isfinite` gradient verification, dynamic norm clamping, and automatic weight rollbacks (`old_p`) if an adversarial perturbation goes unstable.
 * **Logit Bounding (`safe_logits`):** Hard-clamps classification outputs between $[-30.0, 30.0]$ and sanitizes `NaN`/inf values prior to cross-entropy calculation under mixed-precision (`bfloat16`/`float16`) training.
