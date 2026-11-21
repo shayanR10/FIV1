@@ -46,6 +46,8 @@ $$\mathcal{L}_{\text{ortho}} = \frac{\alpha}{3} \left( \left|\langle \hat{z}_1, 
 
 *(where $\alpha = 0.1$, and $\hat{z} = \frac{z}{\|z\|_2 + 10^{-8}}$)*
 
+---
+
 ### 3. Optimization Math & Mixed-Precision Protocol (`FIV1.2` Stability Upgrades)
 
 To train safely on small datasets without VRAM leaks or `NaN` gradient explosions, FIV1.2 implements a customized Sharpness-Aware Minimization (SAM) optimizer wrapped around AdamW, executed under PyTorch mixed precision (`torch.amp.autocast`) with robust finite-state guards.
@@ -56,13 +58,13 @@ To train safely on small datasets without VRAM leaks or `NaN` gradient explosion
 2. **Finite-State Gradient Filtering (`_grad_norm`):** Validates that all gradients are finite (`torch.isfinite`) before calculating global L2 norms, preventing `NaN` propagation or division-by-zero.
 3. **Gradient Unscaling Safeguard:** Explicitly strips the dynamic scaling factor before calculating geometric norms:
 
-   $$\text{scaler.unscale\_}(optimizer.base\_optimizer)$$
+   `scaler.unscale_(optimizer.base_optimizer)`
 
 4. **Adversarial Perturbation Vector ($\epsilon$):** Evaluates true geometric gradient norms to shift weights into an adversarial neighborhood:
 
    $$\hat{\epsilon} = \rho \frac{\nabla_W \mathcal{L}}{\|\nabla_W \mathcal{L}\|_2 + 10^{-12}}$$
 
-   $$W_{\text{perturbed}} = W + \hat{\epsilon} \quad \text{(with old\_p safely cloned)}$$
+   $W_{\text{perturbed}} = W + \hat{\epsilon} \quad \text{(with old p safely cloned)}$
 
 5. **Second Forward-Backward Pass:** Computes loss at the perturbed weights:
 
@@ -78,6 +80,8 @@ To train safely on small datasets without VRAM leaks or `NaN` gradient explosion
 * **Safe Logit Bounding (`safe_logits`):** All hierarchical heads pass through a safety wrapper prior to loss evaluation, clamping outputs between $[-30.0, 30.0]$ and sanitizing `NaN`/infs:
 
 $$\text{logits}_{\text{safe}} = \text{clamp}(\text{nan\_to\_num}(\text{logits}), -30.0, 30.0)$$
+
+---
 
 ### 4. OOD Handling & PBDB Phylogenetic Fallback Logic
 
