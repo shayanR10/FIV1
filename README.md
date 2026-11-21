@@ -92,3 +92,5 @@ To handle out-of-distribution items (e.g., modern bones, rocks, non-fossil objec
   * If confidence sits in the medium tier ($50\% \le c < 85\%$), the engine climbs the Paleobiology Database (PBDB) parent tree to extract the accepted genus or subfamily.
   * If confidence sits in the low tier ($15\% \le c < 50\%$), the engine bypasses lower nodes entirely ("Genus Trap" avoidance) and climbs to broad clades (family, superfamily, or infraorder).
 * **Head-Specific Probability Extraction:** Instead of recycling the weak species score, probabilities for fallback categories are queried directly from the model's corresponding multi-task taxonomic head via explicit index mapping:
+
+$$\text{rank conf} = \text{softmax}(\text{logits rank})[0, \text{class idx}]$$
