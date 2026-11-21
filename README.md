@@ -10,12 +10,12 @@ Building upon the original single-stream ConvNeXt baseline, FIV1.2 introduces an
 
 FIV1.2 utilizes an advanced triple-stream multi-modal architecture designed to process macro photographs, micro-textures, and 3D spatial geometry in parallel before fusing them into a unified representation.
 
-* **Stream 1 (Macro Morphology):** Powered by BioCLIP-2 Vision Transformer (`hf-hub:imageomics/bioclip-2`), extracting global semantic visual representations, projected down to 256 dimensions via LayerNorm and GELU activations ($z_1$).
-* **Stream 2 (Micro-Texture Analysis):** Powered by ConvNeXt-Tiny optimized for fine surface features, grain patterns, and matrix textures, projected to 256 dimensions ($z_2$).
-* **Stream 3 (3D Spatial Geometry):** Powered by a second ConvNeXt-Tiny backbone configured for depth maps or normal scans, projected to 256 dimensions ($z_3$). Includes an automated zero-tensor guard (`spatialIN.abs().sum() == 0`) which forces $z_3 = 0$ if 3D data is missing, preventing backward-compatibility failures on standard 2D field archives.
+- **Stream 1 (Macro Morphology):** Powered by BioCLIP-2 Vision Transformer (`hf-hub:imageomics/bioclip-2`), extracting global semantic visual representations, projected down to 256 dimensions via LayerNorm and GELU activations ($z_1$).
+- **Stream 2 (Micro-Texture Analysis):** Powered by ConvNeXt-Tiny optimized for fine surface features, grain patterns, and matrix textures, projected to 256 dimensions ($z_2$).
+- **Stream 3 (3D Spatial Geometry):** Powered by a second ConvNeXt-Tiny backbone configured for depth maps or normal scans, projected to 256 dimensions ($z_3$). Includes an automated zero-tensor guard (`spatialIN.abs().sum() == 0`) which forces $z_3 = 0$ if 3D data is missing, preventing backward-compatibility failures on standard 2D field archives.
 
 ### Cross-Attentive Fusion Neck
-Integrates streams using multi-head attention followed by a gating mechanism:
+To ensure true cross-modal interaction rather than a degenerate linear projection, stream vectors are stacked into a sequence tensor $\mathbf{Z} = [z_1; z_2; z_3] \in \mathbb{R}^{B \times 3 \times 256}$ before multi-head attention processing:
 
 $$\text{gate} = \sigma\left(\text{Linear}([z_1; z_2; z_3])\right)$$
 
@@ -27,20 +27,20 @@ $$\text{fused} = \left( \text{LayerNorm}(\text{Attention}([z_1, z_2, z_3]) + [z_
 
 The model features six concurrent classification heads (Species + 5 PBDB taxonomic ranks) using Multi-Sample Dropout (`MSDhead`, `numsamples1=5`, $p=0.2$) to stabilize training on sparse data.
 
-* **Total Network Loss ($\mathcal{L}_{\text{total}}$):** Combines label-smoothed cross-entropy across all taxonomic heads with hierarchical rank weighting and an orthogonal regularization penalty:
+- **Total Network Loss ($\mathcal{L}_{\text{total}}$):** Combines label-smoothed cross-entropy across all taxonomic heads with hierarchical rank weighting and an orthogonal regularization penalty:
 
-$$\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{species}} + \sum_{r \in \text{Ranks}} w_r \mathcal{L}_{\text{rank}_r} + \mathcal{L}_{\text{ortho}}$$
+$$\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{species}} + \sum_{r \in \text{Ranks}} w_r \mathcal{L}_{\text{rank\_r}} + \mathcal{L}_{\text{ortho}}$$
 
-* **Species Classification Loss ($\mathcal{L}_{\text{species}}$):** Standard Cross-Entropy with label smoothing ($\epsilon = 0.1$):
+- **Species Classification Loss ($\mathcal{L}_{\text{species}}$):** Standard Cross-Entropy with label smoothing applied directly to the target distribution ($\epsilon = 0.1$):
 
-$$\mathcal{L}_{\text{species}} = -\sum_{i} y_i \log \left((1 - \epsilon)\hat{y}_i + \frac{\epsilon}{C}\right)$$
+$$\mathcal{L}_{\text{species}} = -\sum_{i=1}^{C} \left( (1 - \epsilon)y_i + \frac{\epsilon}{C} \right) \log(\hat{y}_i)$$
 
-* **Hierarchical Rank Weights ($w_r$):**
-  * Genus: $w_{\text{genus}} = 0.5$
-  * Family: $w_{\text{family}} = 0.25$
-  * Superfamily / Subfamily / Infraorder: $w_r = 0.15$
+- **Hierarchical Rank Weights ($w_r$):**
+  - Genus: $w_{\text{genus}} = 0.5$
+  - Family: $w_{\text{family}} = 0.25$
+  - Superfamily / Subfamily / Infraorder: $w_r = 0.15$
 
-* **Orthogonal Stream Contrastive Loss ($\mathcal{L}_{\text{ortho}}$):** Prevents representation collapse by penalizing cosine similarity between normalized stream projections ($\hat{z}_1, \hat{z}_2, \hat{z}_3$):
+- **Orthogonal Stream Contrastive Loss ($\mathcal{L}_{\text{ortho}}$):** Prevents representation collapse by penalizing cosine similarity between normalized stream projections ($\hat{z}_1, \hat{z}_2, \hat{z}_3$):
 
 $$\mathcal{L}_{\text{ortho}} = \frac{\alpha}{3} \left( \left|\langle \hat{z}_1, \hat{z}_2 \rangle\right| + \left|\langle \hat{z}_1, \hat{z}_3 \rangle\right| + \left|\langle \hat{z}_2, \hat{z}_3 \rangle\right| \right)$$
 
@@ -60,15 +60,15 @@ To train safely on small datasets without VRAM leaks or `NaN` gradient explosion
 
    `scaler.unscale_(optimizer.base_optimizer)`
 
-4. **Adversarial Perturbation Vector ($\epsilon$):** Evaluates true geometric gradient norms to shift weights into an adversarial neighborhood:
+4. **Adversarial Perturbation Vector ($\mathbf{\delta}_{\text{adv}}$):** Evaluates true geometric gradient norms to shift weights into an adversarial neighborhood (distinguished from label smoothing $\epsilon$):
 
-   $$\hat{\epsilon} = \rho \frac{\nabla_W \mathcal{L}}{\|\nabla_W \mathcal{L}\|_2 + 10^{-12}}$$
+   $$\mathbf{\delta}_{\text{adv}} = \rho \frac{\nabla_W \mathcal{L}}{\|\nabla_W \mathcal{L}\|_2 + 10^{-12}}$$
 
-   $W_{\text{perturbed}} = W + \hat{\epsilon} \quad \text{(with old p safely cloned)}$
+   $$W_{\text{perturbed}} = W + \mathbf{\delta}_{\text{adv}} \quad \text{(with old p safely cloned)}$$
 
 5. **Second Forward-Backward Pass:** Computes loss at the perturbed weights:
 
-   $$\mathcal{L}_p = \mathcal{L}(W + \hat{\epsilon})$$
+   $$\mathcal{L}_p = \mathcal{L}(W + \mathbf{\delta}_{\text{adv}})$$
 
    $$\text{scaler.scale}(\mathcal{L}_p).\text{backward}()$$
 
@@ -77,9 +77,9 @@ To train safely on small datasets without VRAM leaks or `NaN` gradient explosion
 
    $$W \leftarrow W - \eta \nabla_{W} \mathcal{L}_p$$
 
-* **Safe Logit Bounding (`safe_logits`):** All hierarchical heads pass through a safety wrapper prior to loss evaluation, clamping outputs between $[-30.0, 30.0]$ and sanitizing `NaN`/infs:
+- **Safe Logit Bounding (`safe_logits`):** All hierarchical heads pass through a safety wrapper prior to loss evaluation, clamping outputs between $[-30.0, 30.0]$ and sanitizing `NaN`/infs:
 
-$$\text{logits safe} = \text{clamp}(\text{nan to num}(\text{logits}), -30.0, 30.0)$$
+$$\text{logits}_{\text{safe}} = \text{clamp}(\text{nan\_to\_num}(\text{logits}), -30.0, 30.0)$$
 
 ---
 
@@ -87,10 +87,10 @@ $$\text{logits safe} = \text{clamp}(\text{nan to num}(\text{logits}), -30.0, 30.
 
 To handle out-of-distribution items (e.g., modern bones, rocks, non-fossil objects) and data starvation, inference applies strict safety floors and API-driven tree traversal:
 
-* **Inference Confidence Floor ($15\% / 0.15$):** Any prediction landing below a 15% softmax score is intercepted immediately and categorized as Unidentified Dinosauria (clade).
-* **Taxonomic Tree-Climbing Fallback:**
-  * If confidence sits in the medium tier ($50\% \le c < 85\%$), the engine climbs the Paleobiology Database (PBDB) parent tree to extract the accepted genus or subfamily.
-  * If confidence sits in the low tier ($15\% \le c < 50\%$), the engine bypasses lower nodes entirely ("Genus Trap" avoidance) and climbs to broad clades (family, superfamily, or infraorder).
-* **Head-Specific Probability Extraction:** Instead of recycling the weak species score, probabilities for fallback categories are queried directly from the model's corresponding multi-task taxonomic head via explicit index mapping:
+- **Inference Confidence Floor ($\tau_{\text{floor}} = 0.15$):** Any prediction landing below a 15% softmax score ($p_{\max} < 0.15$) is intercepted immediately and categorized as Unidentified Dinosauria (clade).
+- **Taxonomic Tree-Climbing Fallback Intervals:**
+  - **Medium Tier ($0.50 \le p_{\max} < 0.85$):** The engine climbs the Paleobiology Database (PBDB) parent tree to extract the accepted genus or subfamily.
+  - **Low Tier ($0.15 \le p_{\max} < 0.50$):** The engine bypasses lower nodes entirely ("Genus Trap" avoidance) and climbs directly to broad clades (family, superfamily, or infraorder).
+- **Head-Specific Probability Extraction:** Instead of recycling the weak species score, probabilities for fallback categories are queried directly from the model's corresponding multi-task taxonomic head via explicit index mapping:
 
 $$\text{rank conf} = \text{softmax}(\text{logits rank})[0, \text{class idx}]$$
