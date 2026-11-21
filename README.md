@@ -29,7 +29,7 @@ The model features six concurrent classification heads (Species + 5 PBDB taxonom
 
 - **Total Network Loss ($\mathcal{L}_{\text{total}}$):** Combines label-smoothed cross-entropy across all taxonomic heads with hierarchical rank weighting and an orthogonal regularization penalty:
 
-$$\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{species}} + \sum_{r \in \text{Ranks}} w_r \mathcal{L}_{\text{rank\_r}} + \mathcal{L}_{\text{ortho}}$$
+$$\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{species}} + \sum_{r \in \text{Ranks}} w_r \mathcal{L}_{\text{rank r}} + \mathcal{L}_{\text{ortho}}$$
 
 - **Species Classification Loss ($\mathcal{L}_{\text{species}}$):** Standard Cross-Entropy with label smoothing applied directly to the target distribution ($\epsilon = 0.1$):
 
@@ -79,7 +79,7 @@ To train safely on small datasets without VRAM leaks or `NaN` gradient explosion
 
 - **Safe Logit Bounding (`safe_logits`):** All hierarchical heads pass through a safety wrapper prior to loss evaluation, clamping outputs between $[-30.0, 30.0]$ and sanitizing `NaN`/infs:
 
-$$\text{logits}_{\text{safe}} = \text{clamp}(\text{nan\_to\_num}(\text{logits}), -30.0, 30.0)$$
+$$\text{logits}_{\text{safe}} = \text{clamp}(\text{nan to num}(\text{logits}), -30.0, 30.0)$$
 
 ---
 
