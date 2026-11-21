@@ -80,7 +80,6 @@ To train safely on small datasets without VRAM leaks or `NaN` gradient explosion
 * **Safe Logit Bounding (`safe_logits`):** All hierarchical heads pass through a safety wrapper prior to loss evaluation, clamping outputs between $[-30.0, 30.0]$ and sanitizing `NaN`/infs:
 
 $$\text{logits}_{\text{safe}} = \text{clamp}(\text{nan\_to\_num}(\text{logits}), -30.0, 30.0)$$
-
 ---
 
 ### 4. OOD Handling & PBDB Phylogenetic Fallback Logic
