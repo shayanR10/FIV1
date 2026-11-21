@@ -55,12 +55,12 @@ To train safely on small datasets without VRAM leaks or `NaN` gradient explosion
 ### SAM Two-Step Perturbation Calculus
 1. **First Forward-Backward Pass:** Computes standard gradients $\nabla_W \mathcal{L}$ under autocast scaling:
    $$\mathcal{L}_{\text{scaled}} = \text{scaler.scale}(\mathcal{L})$$
-2. **Finite-State Gradient Filtering (`_grad_norm`):** Validates that all gradients are finite (`torch.isfinite`) before calculating global L2 norms, preventing `NaN` propagation or division-by-zero.
+2. **Finite-State Gradient Filtering (`\_grad\_norm`):** Validates that all gradients are finite (`torch.isfinite`) before calculating global L2 norms, preventing `NaN` propagation or division-by-zero.
 3. **Gradient Unscaling Safeguard:** Explicitly strips the dynamic scaling factor before calculating geometric norms:
    $$\text{scaler.unscale\_}(optimizer.base\_optimizer)$$
 4. **Adversarial Perturbation Vector ($\epsilon$):** Evaluates true geometric gradient norms to shift weights into an adversarial neighborhood:
    $$\hat{\epsilon} = \rho \frac{\nabla_W \mathcal{L}}{\|\nabla_W \mathcal{L}\|_2 + 10^{-12}}$$
-   $$W_{\text{perturbed}} = W + \hat{\epsilon} \quad \text{(with old\_p safely cloned)}$$
+   $$W_{\text{perturbed}} = W + \hat{\epsilon} \quad \text{(with old}\_\text{p safely cloned)}$$
 5. **Second Forward-Backward Pass:** Computes loss at the perturbed weights:
    $$\mathcal{L}_p = \mathcal{L}(W + \hat{\epsilon})$$
    $$\text{scaler.scale}(\mathcal{L}_p).\text{backward}()$$
@@ -68,7 +68,7 @@ To train safely on small datasets without VRAM leaks or `NaN` gradient explosion
 7. **Parameter Update:** Applies the base optimizer step via the GradScaler:
    $$W \leftarrow W - \eta \nabla_{W} \mathcal{L}_p$$
 
-* **Safe Logit Bounding (`safe_logits`):** All hierarchical heads pass through a safety wrapper prior to loss evaluation, clamping outputs between $[-30.0, 30.0]$ and sanitizing `NaN`/infs:
+* **Safe Logit Bounding (`safe\_logits`):** All hierarchical heads pass through a safety wrapper prior to loss evaluation, clamping outputs between $[-30.0, 30.0]$ and sanitizing `NaN`/infs:
   $$\text{logits}_{\text{safe}} = \text{clamp}(\text{nan\_to\_num}(\text{logits}), -30.0, 30.0)$$
 
 ---
@@ -82,4 +82,3 @@ To handle out-of-distribution items (e.g., modern bones, rocks, non-fossil objec
   * If confidence sits in the medium tier ($50\% \le c < 85\%$), the engine climbs the Paleobiology Database (PBDB) parent tree to extract the accepted genus or subfamily.
   * If confidence sits in the low tier ($15\% \le c < 50\%$), the engine bypasses lower nodes entirely ("Genus Trap" avoidance) and climbs to broad clades (family, superfamily, or infraorder).
 * **Head-Specific Probability Extraction:** Instead of recycling the weak species score, probabilities for fallback categories are queried directly from the model's corresponding multi-task taxonomic head via explicit index mapping:
-  $$\text{rank\_conf} = \text{softmax}(\text{logits}_{\text{rank}})[0, \text{class\_idx}]$$
